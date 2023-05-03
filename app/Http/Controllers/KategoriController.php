@@ -42,7 +42,7 @@ class KategoriController extends Controller
         $data->namakategori = $request->namakategori;
         if ($request->file('img')) {
             Storage::delete($data->img);
-            $data->img = Storage::putFile('gambar', $request->file('img'));
+            $data->img = Storage::putFile('gambaar', $request->file('img'));
         }
         $data->save();
         return redirect('/kategori');
@@ -50,10 +50,11 @@ class KategoriController extends Controller
 
     public function destroy($id)
     {
-        if ($id->img) {
-            Storage::delete($id->img);
+        $data = kategori::find($id);
+        if ($data->img) {
+            Storage::delete($data->img);
         }
-        $data = kategori::destroy($id->id);
+        kategori::destroy($id);
         return redirect('/kategori');
     }
 }
