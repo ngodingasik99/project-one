@@ -19,7 +19,7 @@ class KategoriController extends Controller
     {
         $validasi = $request->validate([
             'namakategori' => 'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10'
         ]);
 
         if ($request->file('img')) {
